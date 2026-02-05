@@ -1,0 +1,62 @@
+version: '3.8'
+
+services:
+  # TrendPulse API
+  api:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "8000:8000"
+    environment:
+      - DEBUG=false
+      - HOST=0.0.0.0
+      - PORT=8000
+      - REDIS_URL=redis://redis:6379
+      - DATABASE_URL=postgresql://trendpulse:trendpulse@postgres:5432/trendpulse
+    env_file:
+      - .env
+    depends_on:
+      - redis
+      - postgres
+    restart: unless-stopped
+    volumes:
+      - ./backend:/app/backend
+      - telegram_sessions:/app/sessions
+    networks:
+      - trendpulse
+
+  # Redis Cache
+  redis:
+    image: redis:7-alpine
+    ports:
+      - "6379:6379"
+    volumes:
+      - redis_data:/data
+    restart: unless-stopped
+    networks:
+      - trendpulse
+
+  # PostgreSQL Database (optional, for persistence)
+  postgres:
+    image: postgres:15-alpine
+    environment:
+      POSTGRES_USER: trendpulse
+      POSTGRES_PASSWORD: trendpulse
+      POSTGRES_DB: trendpulse
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    restart: unless-stopped
+    networks:
+      - trendpulse
+
+volumes:
+  redis_data:
+  postgres_data:
+  telegram_sessions:
+
+networks:
+  trendpulse:
+    driver: bridge

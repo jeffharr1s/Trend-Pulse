@@ -1,0 +1,100 @@
+# TrendPulse - Python Dependencies
+# ================================
+
+# Web Framework
+fastapi>=0.109.0
+uvicorn[standard]>=0.27.0
+pydantic>=2.5.0
+pydantic-settings>=2.1.0
+
+# Async HTTP
+aiohttp>=3.9.0
+httpx>=0.26.0
+
+# WebSockets
+websockets>=12.0
+
+# =================================
+# Data Source SDKs
+# =================================
+
+# Reddit
+asyncpraw>=7.7.0
+
+# Telegram
+telethon>=1.34.0
+
+# Discord
+discord.py>=2.3.0
+
+# Twitter/X (optional - requires elevated access)
+tweepy>=4.14.0
+
+# =================================
+# Analytics & Data Processing
+# =================================
+
+# Data manipulation
+pandas>=2.1.0
+numpy>=1.26.0
+
+# NLP / Sentiment Analysis
+textblob>=0.17.0
+vaderSentiment>=3.3.0
+
+# =================================
+# Trading APIs (Optional)
+# =================================
+
+# Alpaca (Stocks)
+alpaca-py>=0.13.0
+
+# Crypto Exchanges
+ccxt>=4.2.0
+python-binance>=1.0.19
+
+# =================================
+# Database (Optional)
+# =================================
+
+# PostgreSQL
+asyncpg>=0.29.0
+sqlalchemy>=2.0.0
+
+# Redis (caching)
+redis>=5.0.0
+
+# =================================
+# Utilities
+# =================================
+
+# Environment variables
+python-dotenv>=1.0.0
+
+# Scheduling
+apscheduler>=3.10.0
+
+# Logging
+loguru>=0.7.0
+
+# Date/Time
+python-dateutil>=2.8.0
+
+# =================================
+# Development
+# =================================
+
+# Testing
+pytest>=7.4.0
+pytest-asyncio>=0.23.0
+pytest-cov>=4.1.0
+
+# Linting
+black>=23.12.0
+ruff>=0.1.0
+mypy>=1.8.0
+
+# =================================
+# Google Trends (Optional)
+# =================================
+pytrends>=4.9.0
